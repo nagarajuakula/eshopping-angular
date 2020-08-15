@@ -1,0 +1,27 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ShippingDetailsComponent } from './shipping-details.component';
+import { RouterTestingModule } from '@angular/router/testing';
+
+describe('ShippingDetailsComponent', () => {
+  let component: ShippingDetailsComponent;
+  let fixture: ComponentFixture<ShippingDetailsComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ShippingDetailsComponent ],
+      imports: [RouterTestingModule]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ShippingDetailsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

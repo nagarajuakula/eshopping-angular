@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+    data-target="#navbarTogglerDemo03" 
+    aria-controls="navbarTogglerDemo03" aria-expanded="false" 
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-bar navbar-kebab"></span>
+    <span class="navbar-toggler-bar navbar-kebab"></span>
+    <span class="navbar-toggler-bar navbar-kebab"></span>
+    </button>
+    <div class="logo">
+      <a routerLink="" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="../../assets/images/IMG_0069.JPG">
+          </div>
+        </a>
+    </div>
+    <a class="navbar-brand" style="color: azure;padding-left: 0.3125rem;" routerLink="">eShopping</a>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mt-2 mt-lg-0 ">
+        <li class="nav-item" *ngIf="authService.isLoggedIn">
+          <div>
+            <span>Hello {{ authService.user.username }}</span>
+          </div>
+        </li>&nbsp;&nbsp;&nbsp;&nbsp;
+        <li class="nav-item" *ngIf="authService.isLoggedIn">
+          <div>
+            <a (click)="addProduct()" style="cursor: pointer; color: black;">
+              Add Product
+            </a>
+          </div>
+        </li>&nbsp;&nbsp;
+        <li class="nav-item">
+          <div>
+            <a routerLink="/cart"  routerLinkActive="active" style="color: black;">
+              <i class="fa fa-shopping-cart">
+               <span class="mt-2">
+                 {{ cartService.items.length }}
+                 </span>
+             </i>
+            </a>
+          </div>
+        </li>&nbsp;&nbsp;
+        <li class="nav-item" *ngIf="!authService.isLoggedIn">
+          <div>
+            <a (click)="login()" style="cursor: pointer;color: black;">
+              Login
+            </a>
+          </div>
+        </li>
+        <li class="nav-item" *ngIf="authService.isLoggedIn">
+          <div>
+            <a (click)="logout()" style="cursor: pointer;color: black;">
+              Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

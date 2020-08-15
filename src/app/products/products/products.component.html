@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-xl-3">
+    <form>
+    <h4 for="category_select">Category By:</h4>
+    <select class="form-control" name="selectedCategory" id="selectedCategory"
+    [(ngModel)]="selectedCategory">
+      <option value="" selected>All</option>
+      <option *ngFor="let category of productsService.categories" [ngValue]="category">{{ category }}</option>
+    </select>
+  </form>
+  </div>
+  <div class="col-xl-9">
+    <div class="row row-cols-1 row-cols-md-4">
+      <div class="col-md-3" style="padding-bottom: 15px;" *ngFor="let product of (products | searchByCategory:selectedCategory)">
+        <div class="card" style="cursor: pointer;">
+          <img src="../../../assets/images/female.png" 
+          class="card-img-top" width="200px" height="200px" alt="..."
+          (click)="goToProduct(product.id)">
+          <div class="card-body" (click)="goToProduct(product.id)">
+            <h5 #title class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.price }}</p>
+          </div>
+          <div class="card-footer">
+            <span class="right">
+              <a placement="top" mdbTooltip="Quick Look" container="body"
+                  (click)="addProductToCart(product.id)">
+                  <i class="fa fa-shopping-cart"></i>
+              </a>
+          </span>&nbsp;&nbsp;
+          <span class="right">
+            <a href="#" class="btn btn-primary">Buy</a>
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <app-no-product-found 
+                [title]="messageTitle" 
+                [description]="messageDescription" 
+                [goToLink]="goToLink"
+                [goToMessage]="goToMessage" 
+                *ngIf="filterByCategory() === 0">
+            </app-no-product-found>
+    </div>
+  </div>
+</div>
