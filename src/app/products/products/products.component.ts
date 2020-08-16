@@ -12,7 +12,6 @@ import { CartService } from '../../shared/services/cart.service';
 })
 export class ProductsComponent implements OnInit {
 
-  enabled = false;
   products: Product[] = [];
   selectedCategory: string;
   messageTitle = "No Products found in this category";
@@ -26,7 +25,7 @@ export class ProductsComponent implements OnInit {
               private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.selectedCategory = "Books";
+    this.selectedCategory = "All";
       this.productsService.getProducts().subscribe(products => {
         this.products = products;
     });
@@ -38,15 +37,5 @@ export class ProductsComponent implements OnInit {
 
   addProductToCart(productId: number) {
     this.cartService.addToCart(productId);
-  }
-
-  filterByCategory() {
-    if(this.selectedCategory === 'All') {
-      return this.products.length;
-    } else {
-      this.products = this.products.filter(product => {
-        return product.category === this.selectedCategory;
-      });
-    }
   }
 }

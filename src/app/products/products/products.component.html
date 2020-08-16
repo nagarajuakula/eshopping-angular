@@ -4,7 +4,7 @@
     <h4 for="category_select">Category By:</h4>
     <select class="form-control" name="selectedCategory" id="selectedCategory"
     [(ngModel)]="selectedCategory">
-      <option value="" selected>All</option>
+      <option value="All" selected>All</option>
       <option *ngFor="let category of productsService.categories" [ngValue]="category">{{ category }}</option>
     </select>
   </form>
@@ -39,7 +39,7 @@
                 [description]="messageDescription" 
                 [goToLink]="goToLink"
                 [goToMessage]="goToMessage" 
-                *ngIf="filterByCategory() === 0">
+                *ngIf="(products | searchByCategory:selectedCategory).length === 0">
             </app-no-product-found>
     </div>
   </div>

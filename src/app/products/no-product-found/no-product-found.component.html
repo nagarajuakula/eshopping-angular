@@ -9,11 +9,13 @@
           {{description}}
         </div>
         <div class="error-actions">
-          <!-- <a [routerLink]="[ '/' ]" class="btn btn-primary btn-lg">
-            <span class="glyphicon glyphicon-home"></span>
-            Take Me Home </a> --> 
-          <a [routerLink]= "goToLink" class="btn btn-primary btn-lg">
+          <a [routerLink]= "goToLink" class="btn btn-primary btn-lg" *ngIf="isLoggedIn; else goToHome">
             <span class="glyphicon glyphicon-home"></span>{{goToMessage}}</a>
+          <ng-template #goToHome>
+            <a [routerLink]="[ '/' ]" class="btn btn-primary btn-lg">
+              <span class="glyphicon glyphicon-home"></span>
+              Take Me Home </a> 
+          </ng-template>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-no-product-found',
@@ -12,9 +13,12 @@ export class NoProductFoundComponent implements OnInit {
   @Input() goToMessage: string;
   @Input() goToLink: string;
 
-  constructor() { }
+  isLoggedIn = false;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.authService.isLoggedIn;
   }
 
 }
