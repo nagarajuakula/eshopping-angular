@@ -11,7 +11,7 @@
   </div>
   <div class="col-xl-9">
     <div class="row row-cols-1 row-cols-md-4">
-      <div class="col-md-3" style="padding-bottom: 15px;" *ngFor="let product of (products | searchByCategory:selectedCategory)">
+      <div class="col-md-3" style="padding-bottom: 15px;" *ngFor="let product of (products | searchByCategory:selectedCategory | search:productsService.searchTerm)">
         <div class="card" style="cursor: pointer;">
           <img src="../../../assets/images/female.png" 
           class="card-img-top" width="200px" height="200px" alt="..."
@@ -39,7 +39,7 @@
                 [description]="messageDescription" 
                 [goToLink]="goToLink"
                 [goToMessage]="goToMessage" 
-                *ngIf="(products | searchByCategory:selectedCategory).length === 0">
+                *ngIf="(products | searchByCategory:selectedCategory | search:productsService.searchTerm).length === 0">
             </app-no-product-found>
     </div>
   </div>

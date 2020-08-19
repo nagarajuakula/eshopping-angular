@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../shared/services/cart.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
+import { ProductsService } from '../products/services/products.service';
 
 @Component({
     selector: 'app-header',
@@ -9,11 +10,12 @@ import { AuthService } from '../shared/services/auth.service';
     styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
-
+    
     constructor(public cartService: CartService,
                 private router: Router,
                 private aRoute: ActivatedRoute,
-                public authService: AuthService) {}
+                public authService: AuthService,
+                public productService: ProductsService) {}
 
     ngOnInit() { }
 

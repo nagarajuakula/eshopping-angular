@@ -16,7 +16,7 @@ export class AuthService {
 
     login(user: User) {
         this.user = user;
-        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(user.username + ':' + user.password)});
+        const headers = new HttpHeaders({ Authorization: 'Bearer ' + btoa(user.username + ':' + user.password)});
         return this.http.post<User>(USER_API + "/login", user, { headers, responseType: 'text' as 'json'})
          .pipe(map(res => {
              this.isLoggedIn = true;

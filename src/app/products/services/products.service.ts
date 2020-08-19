@@ -13,7 +13,7 @@ export class ProductsService {
 
     products: Product[] = [];
     categories: string[] = ["Books", "Electronics", "Groceries"];
-
+    searchTerm;
     constructor(private http: HttpClient) { }
 
     getProducts(): Observable<Product[]> {
